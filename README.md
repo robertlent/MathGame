@@ -23,8 +23,3 @@ equations. You will be asked 5 questions per game and your score will be display
     + Adding more questions per game.
     + Keeping track of high scores.
     + Adding a timer for each question.
-
-### License
-
-This project is licensed under the MIT License - see the [LICENSE.md](https://opensource.org/licenses/MIT) file for
-details.
