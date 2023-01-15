@@ -1,25 +1,24 @@
 using MathGame.Models;
+
 namespace MathGame;
 
 public static class GameEngine
 {
-    internal static void AdditionGame(string message)
+    internal static void AdditionGame(string message, int max)
     {
         var random = new Random();
         var score = 0;
 
         for (var i = 0; i < 5; i++)
         {
-            Console.Clear();
-            Console.WriteLine(message);
-            var firstNumber = random.Next(1, 9);
-            var secondNumber = random.Next(1, 9);
+            var firstNumber = random.Next(1, max);
+            var secondNumber = random.Next(1, max);
             var result = "";
 
             do
             {
                 Console.Clear();
-                Console.WriteLine(message);
+                Console.WriteLine(message + "\n");
                 Console.WriteLine($"{firstNumber} + {secondNumber}");
 
                 result = Console.ReadLine();
@@ -39,28 +38,30 @@ public static class GameEngine
 
             if (i != 4) continue;
 
-            Console.WriteLine($"Game over. Your final score is {score}.\nPress any key to go back to the main menu.");
+            Console.WriteLine(
+                $"Game over. Your final score is {score}.\n\nPress any key to go back to the main menu.\n");
             Console.ReadLine();
+            Console.Clear();
         }
 
         Helpers.AddToHistory(score, GameType.Addition);
     }
 
-    internal static void SubtractionGame(string message)
+    internal static void SubtractionGame(string message, int max)
     {
         var random = new Random();
         var score = 0;
 
         for (var i = 0; i < 5; i++)
         {
-            var firstNumber = random.Next(1, 9);
-            var secondNumber = random.Next(1, 9);
+            var firstNumber = random.Next(1, max);
+            var secondNumber = random.Next(1, max);
             var result = "";
 
             do
             {
                 Console.Clear();
-                Console.WriteLine(message);
+                Console.WriteLine(message + "\n");
                 Console.WriteLine($"{firstNumber} - {secondNumber}");
 
                 result = Console.ReadLine();
@@ -80,30 +81,30 @@ public static class GameEngine
 
             if (i != 4) continue;
 
-            Console.WriteLine($"Game over. Your final score is {score}.\nPress any key to go back to the main menu.");
+            Console.WriteLine(
+                $"Game over. Your final score is {score}.\n\nPress any key to go back to the main menu.\n");
             Console.ReadLine();
+            Console.Clear();
         }
 
         Helpers.AddToHistory(score, GameType.Subtraction);
     }
 
-    internal static void MultiplicationGame(string message)
+    internal static void MultiplicationGame(string message, int max)
     {
         var random = new Random();
         var score = 0;
 
         for (var i = 0; i < 5; i++)
         {
-            Console.Clear();
-            Console.WriteLine(message);
-            var firstNumber = random.Next(1, 9);
-            var secondNumber = random.Next(1, 9);
+            var firstNumber = random.Next(1, max);
+            var secondNumber = random.Next(1, max);
             var result = "";
 
             do
             {
                 Console.Clear();
-                Console.WriteLine(message);
+                Console.WriteLine(message + "\n");
                 Console.WriteLine($"{firstNumber} * {secondNumber}");
 
                 result = Console.ReadLine();
@@ -123,23 +124,22 @@ public static class GameEngine
 
             if (i != 4) continue;
 
-            Console.WriteLine($"Game over. Your final score is {score}.\nPress any key to go back to the main menu.");
+            Console.WriteLine(
+                $"Game over. Your final score is {score}.\n\nPress any key to go back to the main menu.\n");
             Console.ReadLine();
+            Console.Clear();
         }
 
         Helpers.AddToHistory(score, GameType.Multiplication);
     }
 
-    internal static void DivisionGame(string message)
+    internal static void DivisionGame(string message, int max)
     {
         var score = 0;
 
         for (var i = 0; i < 5; i++)
         {
-            Console.Clear();
-            Console.WriteLine(message);
-
-            var divisionNumbers = Helpers.GetDivisionNumbers();
+            var divisionNumbers = Helpers.GetDivisionNumbers(max);
             var firstNumber = divisionNumbers[0];
             var secondNumber = divisionNumbers[1];
             var result = "";
@@ -147,7 +147,7 @@ public static class GameEngine
             do
             {
                 Console.Clear();
-                Console.WriteLine(message);
+                Console.WriteLine(message + "\n");
                 Console.WriteLine($"{firstNumber} / {secondNumber}");
 
                 result = Console.ReadLine();
@@ -167,8 +167,10 @@ public static class GameEngine
 
             if (i != 4) continue;
 
-            Console.WriteLine($"Game over. Your final score is {score}.\nPress any key to go back to the main menu.");
+            Console.WriteLine(
+                $"Game over. Your final score is {score}.\n\nPress any key to go back to the main menu.\n");
             Console.ReadLine();
+            Console.Clear();
         }
 
         Helpers.AddToHistory(score, GameType.Division);

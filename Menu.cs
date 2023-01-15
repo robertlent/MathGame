@@ -2,48 +2,38 @@ namespace MathGame;
 
 public static class Menu
 {
-    internal static void ShowMenu(string? s, DateTime date)
+    internal static void ShowMenu(string? name, DateTime date)
     {
         Console.Clear();
         Console.WriteLine("--------------------------------------------------");
-        Console.WriteLine($"Hello {s}. It is {date.DayOfWeek}. This is your math game.\n\n");
+        Console.WriteLine($"Hello {name}. It is {date.DayOfWeek}. Let's practice some math.\n\n");
+
         var isPlaying = true;
 
         do
         {
-            Console.WriteLine(@"What game would you like to play today?
+            var gameSelected = Helpers.ChooseGameType();
 
-            V - View Previous Scores
-            A - Addition
-            S - Subtraction
-            M - Multiplication
-            D - Division
-            Q - Quit the program");
-
-            Console.WriteLine("\n--------------------------------------------------");
-
-            var gameSelected = Console.ReadLine();
-
-            switch (gameSelected?.ToLower().Trim())
+            switch (gameSelected)
             {
                 case "v":
                     Helpers.GetScores();
                     break;
                 case "a":
-                    GameEngine.AdditionGame("Addition game");
+                    GameEngine.AdditionGame("Addition game", Helpers.SetDifficulty('a'));
                     break;
                 case "s":
-                    GameEngine.SubtractionGame("Subtraction game");
+                    GameEngine.SubtractionGame("Subtraction game", Helpers.SetDifficulty('s'));
                     break;
                 case "m":
-                    GameEngine.MultiplicationGame("Multiplication game");
+                    GameEngine.MultiplicationGame("Multiplication game", Helpers.SetDifficulty('m'));
                     break;
                 case "d":
-                    GameEngine.DivisionGame("Division game");
+                    GameEngine.DivisionGame("Division game", Helpers.SetDifficulty('d'));
                     break;
                 case "q":
                     Console.Clear();
-                    Console.WriteLine("Goodbye");
+                    Console.WriteLine("Goodbye\n");
                     isPlaying = false;
                     break;
                 default:
